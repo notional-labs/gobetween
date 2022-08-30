@@ -9,7 +9,7 @@ package counters
 import (
 	"time"
 
-	"github.com/yyyar/gobetween/core"
+	"github.com/yyyar/gobetween/src/core"
 )
 
 const (

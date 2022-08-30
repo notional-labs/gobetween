@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yyyar/gobetween/balance"
-	"github.com/yyyar/gobetween/core"
+	"github.com/yyyar/gobetween/src/balance"
+	"github.com/yyyar/gobetween/src/core"
 )
 
 func TestOnlyBestPriorityBackendsElected(t *testing.T) {

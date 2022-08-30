@@ -7,11 +7,11 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/core"
-	"github.com/yyyar/gobetween/info"
-	"github.com/yyyar/gobetween/logging"
-	"github.com/yyyar/gobetween/stats/counters"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/core"
+	"github.com/yyyar/gobetween/src/info"
+	"github.com/yyyar/gobetween/src/logging"
+	"github.com/yyyar/gobetween/src/stats/counters"
 )
 
 const (

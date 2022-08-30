@@ -10,7 +10,7 @@ import (
 	"errors"
 	"net"
 
-	"github.com/yyyar/gobetween/config"
+	"github.com/yyyar/gobetween/src/config"
 )
 
 /**

@@ -6,8 +6,8 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/yyyar/gobetween/balance"
-	"github.com/yyyar/gobetween/core"
+	"github.com/yyyar/gobetween/src/balance"
+	"github.com/yyyar/gobetween/src/core"
 )
 
 func makeDistribution(balancer core.Balancer, backends []*core.Backend, clients []DummyContext) (map[string]*core.Backend, error) {

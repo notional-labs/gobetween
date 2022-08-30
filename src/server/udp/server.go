@@ -14,17 +14,17 @@ import (
 	"time"
 
 	"github.com/eric-lindau/udpfacade"
-	"github.com/yyyar/gobetween/balance"
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/core"
-	"github.com/yyyar/gobetween/discovery"
-	"github.com/yyyar/gobetween/healthcheck"
-	"github.com/yyyar/gobetween/logging"
-	"github.com/yyyar/gobetween/server/modules/access"
-	"github.com/yyyar/gobetween/server/scheduler"
-	"github.com/yyyar/gobetween/server/udp/session"
-	"github.com/yyyar/gobetween/stats"
-	"github.com/yyyar/gobetween/utils"
+	"github.com/yyyar/gobetween/src/balance"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/core"
+	"github.com/yyyar/gobetween/src/discovery"
+	"github.com/yyyar/gobetween/src/healthcheck"
+	"github.com/yyyar/gobetween/src/logging"
+	"github.com/yyyar/gobetween/src/server/modules/access"
+	"github.com/yyyar/gobetween/src/server/scheduler"
+	"github.com/yyyar/gobetween/src/server/udp/session"
+	"github.com/yyyar/gobetween/src/stats"
+	"github.com/yyyar/gobetween/src/utils"
 )
 
 const UDP_PACKET_SIZE = 65507

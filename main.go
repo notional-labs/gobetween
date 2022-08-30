@@ -11,14 +11,14 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/yyyar/gobetween/api"
-	"github.com/yyyar/gobetween/cmd"
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/info"
-	"github.com/yyyar/gobetween/logging"
-	"github.com/yyyar/gobetween/manager"
-	"github.com/yyyar/gobetween/metrics"
-	"github.com/yyyar/gobetween/utils/codec"
+	"github.com/yyyar/gobetween/src/api"
+	"github.com/yyyar/gobetween/src/cmd"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/info"
+	"github.com/yyyar/gobetween/src/logging"
+	"github.com/yyyar/gobetween/src/manager"
+	"github.com/yyyar/gobetween/src/metrics"
+	"github.com/yyyar/gobetween/src/utils/codec"
 )
 
 /**

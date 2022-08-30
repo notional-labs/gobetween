@@ -15,13 +15,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/core"
-	"github.com/yyyar/gobetween/logging"
-	"github.com/yyyar/gobetween/server"
-	"github.com/yyyar/gobetween/service"
-	"github.com/yyyar/gobetween/utils/codec"
-	"github.com/yyyar/gobetween/utils/profiler"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/core"
+	"github.com/yyyar/gobetween/src/logging"
+	"github.com/yyyar/gobetween/src/server"
+	"github.com/yyyar/gobetween/src/service"
+	"github.com/yyyar/gobetween/src/utils/codec"
+	"github.com/yyyar/gobetween/src/utils/profiler"
 )
 
 /* Map of app current servers */

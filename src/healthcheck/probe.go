@@ -15,9 +15,9 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/core"
-	"github.com/yyyar/gobetween/logging"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/core"
+	"github.com/yyyar/gobetween/src/logging"
 )
 
 func probe(t core.Target, cfg config.HealthcheckConfig, result chan<- CheckResult) {
@@ -26,7 +26,7 @@ func probe(t core.Target, cfg config.HealthcheckConfig, result chan<- CheckResul
 	timeout, _ := time.ParseDuration(cfg.Timeout)
 
 	checkResult := CheckResult{
-		Status:   Unhealthy,
+		Status: Unhealthy,
 		Target: t,
 	}
 

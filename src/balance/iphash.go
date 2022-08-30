@@ -11,7 +11,7 @@ import (
 	"hash/fnv"
 	"sort"
 
-	"github.com/yyyar/gobetween/core"
+	"github.com/yyyar/gobetween/src/core"
 )
 
 /**

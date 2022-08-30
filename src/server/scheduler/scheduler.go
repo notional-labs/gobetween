@@ -10,13 +10,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/yyyar/gobetween/core"
-	"github.com/yyyar/gobetween/discovery"
-	"github.com/yyyar/gobetween/healthcheck"
-	"github.com/yyyar/gobetween/logging"
-	"github.com/yyyar/gobetween/metrics"
-	"github.com/yyyar/gobetween/stats"
-	"github.com/yyyar/gobetween/stats/counters"
+	"github.com/yyyar/gobetween/src/core"
+	"github.com/yyyar/gobetween/src/discovery"
+	"github.com/yyyar/gobetween/src/healthcheck"
+	"github.com/yyyar/gobetween/src/logging"
+	"github.com/yyyar/gobetween/src/metrics"
+	"github.com/yyyar/gobetween/src/stats"
+	"github.com/yyyar/gobetween/src/stats/counters"
 )
 
 /**

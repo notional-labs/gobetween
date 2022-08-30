@@ -8,10 +8,11 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
-	"github.com/yyyar/gobetween/info"
-	"github.com/yyyar/gobetween/utils/pidfile"
 	"os"
+
+	"github.com/spf13/cobra"
+	"github.com/yyyar/gobetween/src/info"
+	"github.com/yyyar/gobetween/src/utils/pidfile"
 )
 
 /* Persistent parsed options */

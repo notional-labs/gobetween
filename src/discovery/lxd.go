@@ -17,10 +17,10 @@ import (
 	lxd_config "github.com/lxc/lxd/lxc/config"
 	"github.com/lxc/lxd/shared"
 	lxd_api "github.com/lxc/lxd/shared/api"
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/core"
-	"github.com/yyyar/gobetween/logging"
-	"github.com/yyyar/gobetween/utils"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/core"
+	"github.com/yyyar/gobetween/src/logging"
+	"github.com/yyyar/gobetween/src/utils"
 )
 
 const (
@@ -258,9 +258,10 @@ func lxdBuildConfig(cfg config.DiscoveryConfig) (*lxd_config.Config, error) {
 	return config, nil
 }
 
-/**
-* lxdGetRemoteCertificate will attempt to retrieve a remote LXD server's
-  certificate and save it to the servercert's path.
+/*
+*
+  - lxdGetRemoteCertificate will attempt to retrieve a remote LXD server's
+    certificate and save it to the servercert's path.
 */
 func lxdGetRemoteCertificate(config *lxd_config.Config, remote string) error {
 	addr := config.Remotes[remote]

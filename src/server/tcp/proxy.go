@@ -11,8 +11,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/yyyar/gobetween/core"
-	"github.com/yyyar/gobetween/logging"
+	"github.com/yyyar/gobetween/src/core"
+	"github.com/yyyar/gobetween/src/logging"
 )
 
 const (

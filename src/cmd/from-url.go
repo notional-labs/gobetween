@@ -12,10 +12,10 @@ import (
 	"net/http"
 
 	"github.com/spf13/cobra"
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/info"
-	"github.com/yyyar/gobetween/utils"
-	"github.com/yyyar/gobetween/utils/codec"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/info"
+	"github.com/yyyar/gobetween/src/utils"
+	"github.com/yyyar/gobetween/src/utils/codec"
 )
 
 /**

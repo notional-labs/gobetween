@@ -9,8 +9,8 @@ package api
 import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/logging"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/logging"
 )
 
 /* gin app */
