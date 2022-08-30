@@ -19,7 +19,6 @@ import (
  * Attaches /servers handlers
  */
 func attachServers(app *gin.RouterGroup) {
-
 	/**
 	 * Find all current configured servers
 	 */
@@ -48,7 +47,6 @@ func attachServers(app *gin.RouterGroup) {
 	 * Create new server with name :name
 	 */
 	app.POST("/servers/:name", func(c *gin.Context) {
-
 		name := c.Param("name")
 
 		cfg := config.Server{}
@@ -72,5 +70,4 @@ func attachServers(app *gin.RouterGroup) {
 		name := c.Param("name")
 		c.IndentedJSON(http.StatusOK, stats.GetStats(name))
 	})
-
 }

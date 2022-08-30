@@ -18,7 +18,6 @@ import (
  * Exec with timeout
  */
 func ExecTimeout(timeout time.Duration, params ...string) (string, error) {
-
 	log := logging.For("execTimeout")
 
 	cmd := exec.Command(params[0], params[1:]...)

@@ -20,12 +20,10 @@ import (
  * Attaches / handlers
  */
 func attachRoot(app *gin.RouterGroup) {
-
 	/**
 	 * Global stats
 	 */
 	app.GET("/", func(c *gin.Context) {
-
 		c.IndentedJSON(http.StatusOK, gin.H{
 			"pid":           os.Getpid(),
 			"time":          time.Now(),

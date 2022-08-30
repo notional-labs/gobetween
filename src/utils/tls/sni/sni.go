@@ -27,7 +27,7 @@ var pool = sync.Pool{
 // Conn delegates all calls to net.Conn, but Read to reader
 type Conn struct {
 	reader   io.Reader
-	net.Conn //delegate
+	net.Conn // delegate
 }
 
 func (c Conn) Read(b []byte) (n int, err error) {
@@ -46,7 +46,6 @@ func Sniff(conn net.Conn, readTimeout time.Duration) (net.Conn, string, error) {
 	}
 
 	i, err := conn.Read(buf)
-
 	if err != nil {
 		return nil, "", err
 	}

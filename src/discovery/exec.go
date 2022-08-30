@@ -27,7 +27,6 @@ const (
  * Create new Discovery with Exec fetch func
  */
 func NewExecDiscovery(cfg config.DiscoveryConfig) interface{} {
-
 	d := Discovery{
 		opts:  DiscoveryOpts{execRetryWaitDuration},
 		fetch: execFetch,
@@ -41,7 +40,6 @@ func NewExecDiscovery(cfg config.DiscoveryConfig) interface{} {
  * Fetch / refresh backends exec process
  */
 func execFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
-
 	log := logging.For("execFetch")
 
 	log.Info("Fetching ", cfg.ExecCommand)

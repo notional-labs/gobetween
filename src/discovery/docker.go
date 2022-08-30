@@ -28,7 +28,6 @@ const (
  * Create new Discovery with Docker fetch func
  */
 func NewDockerDiscovery(cfg config.DiscoveryConfig) interface{} {
-
 	d := Discovery{
 		opts:  DiscoveryOpts{dockerRetryWaitDuration},
 		fetch: dockerFetch,
@@ -42,7 +41,6 @@ func NewDockerDiscovery(cfg config.DiscoveryConfig) interface{} {
  * Fetch backends from Docker API
  */
 func dockerFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
-
 	log := logging.For("dockerFetch")
 
 	log.Info("Fetching ", cfg.DockerEndpoint, " ", cfg.DockerContainerLabel, " ", cfg.DockerContainerPrivatePort)
@@ -74,7 +72,7 @@ func dockerFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
 	/* Add filter labels if any */
 	var filters map[string][]string
 	if cfg.DockerContainerLabel != "" {
-		filters = map[string][]string{"label": []string{cfg.DockerContainerLabel}}
+		filters = map[string][]string{"label": {cfg.DockerContainerLabel}}
 	}
 
 	/* Fetch containers */
@@ -118,7 +116,6 @@ func dockerFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
  * Determines container host
  */
 func dockerDetermineContainerHost(client *docker.Client, id string, cfg config.DiscoveryConfig, portHost string) string {
-
 	log := logging.For("dockerDetermineContainerHost")
 
 	/* If host env var specified, try to get it from container vars */
@@ -146,7 +143,7 @@ func dockerDetermineContainerHost(client *docker.Client, id string, cfg config.D
 
 	/* Last chance, try to parse docker host from endpoint string */
 
-	var reg = regexp.MustCompile("(.*?)://(?P<host>[-.A-Za-z0-9]+)/?(.*)")
+	reg := regexp.MustCompile("(.*?)://(?P<host>[-.A-Za-z0-9]+)/?(.*)")
 	match := reg.FindStringSubmatch(cfg.DockerEndpoint)
 
 	if len(match) == 0 {

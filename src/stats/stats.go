@@ -14,7 +14,6 @@ import (
  * Stats of the Server
  */
 type Stats struct {
-
 	/* Current active client connections */
 	ActiveConnections uint `json:"active_connections"`
 

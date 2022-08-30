@@ -16,7 +16,6 @@ import (
  * Count total bandwidth and bandwidth per second
  */
 type BandwidthCounter struct {
-
 	/* Bandwidth Stats */
 	BandwidthStats
 
@@ -49,7 +48,6 @@ type BandwidthCounter struct {
  * Create new BandwidthCounter
  */
 func NewBandwidthCounter(interval time.Duration, out chan BandwidthStats) *BandwidthCounter {
-
 	return &BandwidthCounter{
 		interval: interval,
 		ticker:   time.NewTicker(interval),
@@ -69,9 +67,7 @@ func NewBandwidthCounter(interval time.Duration, out chan BandwidthStats) *Bandw
  * Starts bandwidth counter
  */
 func (this *BandwidthCounter) Start() {
-
 	go func() {
-
 		for {
 			select {
 

@@ -11,12 +11,10 @@ import (
 )
 
 func makeDistribution(balancer core.Balancer, backends []*core.Backend, clients []DummyContext) (map[string]*core.Backend, error) {
-
 	result := make(map[string]*core.Backend)
 
 	for _, client := range clients {
 		electedBackend, err := balancer.Elect(client, backends)
-
 		if err != nil {
 			return nil, err
 		}
@@ -29,7 +27,6 @@ func makeDistribution(balancer core.Balancer, backends []*core.Backend, clients 
 	}
 
 	return result, nil
-
 }
 
 // Prepare list of backends, for testing purposes they end with .1, .2, .3 etc
@@ -51,7 +48,6 @@ func prepareBackends(base string, n int) []*core.Backend {
 
 // Prepare random list of clients
 func prepareClients(n int) []DummyContext {
-
 	clients := make([]DummyContext, n)
 
 	for i := 0; i < n; i++ {
@@ -65,7 +61,6 @@ func prepareClients(n int) []DummyContext {
 	}
 
 	return clients
-
 }
 
 //TODO enable test when real consisten hashing will be implemented
@@ -118,7 +113,6 @@ func TestIPHash2AddingBackendsRedistribution(t *testing.T) {
 */
 
 func TestIPHash1RemovingBackendsStability(t *testing.T) {
-
 	balancer := &balance.Iphash1Balancer{}
 
 	backends := prepareBackends("127.0.0", 4)
@@ -161,5 +155,4 @@ func TestIPHash1RemovingBackendsStability(t *testing.T) {
 		}
 
 	}
-
 }

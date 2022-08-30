@@ -36,7 +36,6 @@ const (
  * Create new Discovery with Json fetch func
  */
 func NewJsonDiscovery(cfg config.DiscoveryConfig) interface{} {
-
 	/* replace with defaults if needed */
 
 	if cfg.JsonHostPattern == "" {
@@ -72,7 +71,6 @@ func NewJsonDiscovery(cfg config.DiscoveryConfig) interface{} {
  * Fetch / refresh backends from URL with json in response
  */
 func jsonFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
-
 	log := logging.For("jsonFetch")
 
 	log.Info("fetching ", cfg.JsonEndpoint)
@@ -109,7 +107,7 @@ func jsonFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
 
 	for k := range parsedArray {
 
-		var key = "[" + strconv.Itoa(k) + "]."
+		key := "[" + strconv.Itoa(k) + "]."
 
 		backend := core.Backend{
 			Weight:   1,

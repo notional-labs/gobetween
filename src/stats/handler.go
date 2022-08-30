@@ -24,7 +24,6 @@ const (
  * Handler processess data from server
  */
 type Handler struct {
-
 	/* Server's name */
 	Name string
 
@@ -59,7 +58,6 @@ type Handler struct {
  * with name 'name'
  */
 func NewHandler(name string) *Handler {
-
 	handler := &Handler{
 		Name:        name,
 		ServerStats: make(chan counters.BandwidthStats, 1),
@@ -90,12 +88,10 @@ func NewHandler(name string) *Handler {
  * Start handler work asynchroniously
  */
 func (this *Handler) Start() {
-
 	this.serverCounter.Start()
 	this.BackendsCounter.Start()
 
 	go func() {
-
 		for {
 			select {
 
@@ -144,7 +140,6 @@ func (this *Handler) Start() {
 			}
 		}
 	}()
-
 }
 
 /**

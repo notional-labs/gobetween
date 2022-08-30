@@ -15,7 +15,6 @@ import (
  * Server interface
  */
 type Server interface {
-
 	/**
 	 * Start server
 	 */

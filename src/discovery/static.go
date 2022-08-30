@@ -17,7 +17,6 @@ import (
  * Creates new static discovery
  */
 func NewStaticDiscovery(cfg config.DiscoveryConfig) interface{} {
-
 	d := Discovery{
 		opts:  DiscoveryOpts{0},
 		cfg:   cfg,
@@ -31,7 +30,6 @@ func NewStaticDiscovery(cfg config.DiscoveryConfig) interface{} {
  * Start discovery
  */
 func staticFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
-
 	log := logging.For("discovery/static")
 
 	var backends []core.Backend

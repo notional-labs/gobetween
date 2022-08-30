@@ -28,7 +28,6 @@ const (
  * Create new Discovery with Consul fetch func
  */
 func NewConsulDiscovery(cfg config.DiscoveryConfig) interface{} {
-
 	d := Discovery{
 		opts:  DiscoveryOpts{consulRetryWaitDuration},
 		fetch: consulFetch,
@@ -42,7 +41,6 @@ func NewConsulDiscovery(cfg config.DiscoveryConfig) interface{} {
  * Fetch backends from Consul API
  */
 func consulFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
-
 	log := logging.For("consulFetch")
 
 	log.Info("Fetching ", cfg)

@@ -56,7 +56,6 @@ var RootCmd = &cobra.Command{
 		}
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-
 		if showVersion {
 			fmt.Println(info.Version)
 			return

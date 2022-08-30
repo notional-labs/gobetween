@@ -58,7 +58,6 @@ func MapVersion(version string) uint16 {
  * Maps tls ciphers from array of strings to array of golang constants
  */
 func MapCiphers(ciphers []string) []uint16 {
-
 	if ciphers == nil || len(ciphers) == 0 {
 		return nil
 	}
@@ -77,7 +76,6 @@ func MapCiphers(ciphers []string) []uint16 {
 }
 
 func MakeTlsConfig(tlsC *config.Tls, getCertificate func(*tls.ClientHelloInfo) (*tls.Certificate, error)) (*tls.Config, error) {
-
 	if tlsC == nil {
 		return nil, nil
 	}
@@ -110,7 +108,6 @@ func MakeTlsConfig(tlsC *config.Tls, getCertificate func(*tls.ClientHelloInfo) (
  * MakeBackendTLSConfig makes a tls.Config for connecting to backends
  */
 func MakeBackendTLSConfig(backendsTls *config.BackendsTls) (*tls.Config, error) {
-
 	if backendsTls == nil {
 		return nil, nil
 	}
@@ -155,5 +152,4 @@ func MakeBackendTLSConfig(backendsTls *config.BackendsTls) (*tls.Config, error) 
 	}
 
 	return result, nil
-
 }

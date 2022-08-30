@@ -14,7 +14,6 @@ import (
  * Bandwidth stats object
  */
 type BandwidthStats struct {
-
 	// Total received bytes
 	RxTotal uint64
 

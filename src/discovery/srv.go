@@ -26,7 +26,6 @@ const (
 )
 
 func NewSrvDiscovery(cfg config.DiscoveryConfig) interface{} {
-
 	d := Discovery{
 		opts:  DiscoveryOpts{srvRetryWaitDuration},
 		fetch: srvFetch,
@@ -40,7 +39,6 @@ func NewSrvDiscovery(cfg config.DiscoveryConfig) interface{} {
  * Create new Discovery with Srv fetch func
  */
 func srvFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
-
 	log := logging.For("srvFetch")
 
 	log.Info("Fetching ", cfg.SrvLookupServer, " ", cfg.SrvLookupPattern)

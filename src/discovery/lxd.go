@@ -32,7 +32,6 @@ const (
  * Create new Discovery with LXD fetch func
  */
 func NewLXDDiscovery(cfg config.DiscoveryConfig) interface{} {
-
 	d := Discovery{
 		opts:  DiscoveryOpts{lxdRetryWaitDuration},
 		fetch: lxdFetch,
@@ -272,7 +271,7 @@ func lxdGetRemoteCertificate(config *lxd_config.Config, remote string) error {
 	}
 
 	serverCertDir := config.ConfigPath("servercerts")
-	if err := os.MkdirAll(serverCertDir, 0750); err != nil {
+	if err := os.MkdirAll(serverCertDir, 0o750); err != nil {
 		return fmt.Errorf("Could not create server cert dir: %s", err)
 	}
 

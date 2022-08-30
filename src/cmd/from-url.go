@@ -22,7 +22,6 @@ import (
  * Add command
  */
 func init() {
-
 	RootCmd.AddCommand(FromUrlCmd)
 }
 
@@ -33,7 +32,6 @@ var FromUrlCmd = &cobra.Command{
 	Use:   "from-url <url>",
 	Short: "Start using config from URL",
 	Run: func(cmd *cobra.Command, args []string) {
-
 		if len(args) != 1 {
 			cmd.Help()
 			return

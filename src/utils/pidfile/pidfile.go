@@ -29,6 +29,5 @@ func WritePidFile(path string) error {
 		}
 	}
 
-	return ioutil.WriteFile(path, []byte(fmt.Sprintf("%d", os.Getpid())), 0664)
-
+	return ioutil.WriteFile(path, []byte(fmt.Sprintf("%d", os.Getpid())), 0o664)
 }

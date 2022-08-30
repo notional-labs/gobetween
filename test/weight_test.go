@@ -74,7 +74,6 @@ func TestOnlyBestPriorityBackendsElected(t *testing.T) {
 		}
 
 	}
-
 }
 
 func TestAllWeightsEqualTo0Distribution(t *testing.T) {
@@ -159,7 +158,7 @@ func TestWeightDistribution(t *testing.T) {
 		},
 	}
 
-	//shuffle
+	// shuffle
 	for s := 0; s < 100; s++ {
 		i := rand.Intn(len(backends))
 		j := rand.Intn(len(backends))
@@ -192,6 +191,5 @@ func TestWeightDistribution(t *testing.T) {
 		if math.Abs(float64(v)/float64(n)-float64(k)) > 0.5 {
 			t.Error(k, ":", float64(v)/float64(n))
 		}
-
 	}
 }

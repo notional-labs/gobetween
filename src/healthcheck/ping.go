@@ -19,7 +19,6 @@ import (
  * Ping healthcheck
  */
 func ping(t core.Target, cfg config.HealthcheckConfig, result chan<- CheckResult) {
-
 	pingTimeoutDuration, _ := time.ParseDuration(cfg.Timeout)
 
 	log := logging.For("healthcheck/ping")

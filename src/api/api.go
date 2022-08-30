@@ -27,8 +27,7 @@ func init() {
  * Starts REST API server
  */
 func Start(cfg config.ApiConfig) {
-
-	var log = logging.For("api")
+	log := logging.For("api")
 
 	if !cfg.Enabled {
 		log.Info("API disabled")

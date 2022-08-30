@@ -34,7 +34,6 @@ var (
  * Initialize package
  */
 func init() {
-
 	// Set GOMAXPROCS if not set
 	if os.Getenv("GOMAXPROCS") == "" {
 		runtime.GOMAXPROCS(runtime.NumCPU())
@@ -48,14 +47,12 @@ func init() {
 	info.Revision = revision
 	info.Branch = branch
 	info.StartTime = time.Now()
-
 }
 
 /**
  * Entry point
  */
 func main() {
-
 	log.Printf("gobetween v%s", version)
 
 	env := os.Getenv("GOBETWEEN")
@@ -75,7 +72,6 @@ func main() {
 
 	// Process flags and start
 	cmd.Execute(func(cfg *config.Config) {
-
 		// Configure logging
 		logging.Configure(cfg.Logging.Output, cfg.Logging.Level, cfg.Logging.Format)
 

@@ -19,7 +19,6 @@ import (
  * Currently supported: toml and json
  */
 func Encode(in interface{}, out *string, format string) error {
-
 	switch format {
 	case "toml":
 		buf := new(bytes.Buffer)
@@ -45,7 +44,6 @@ func Encode(in interface{}, out *string, format string) error {
  * Currently supported: toml and json
  */
 func Decode(data string, out interface{}, format string) error {
-
 	switch format {
 	case "toml":
 		_, err := toml.Decode(data, out)

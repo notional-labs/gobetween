@@ -45,7 +45,6 @@ var (
 )
 
 func defineMetrics() {
-
 	buildInfo = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: namespace,
 		Name:      "build_info",
@@ -152,11 +151,9 @@ func defineMetrics() {
 		Name:      "live",
 		Help:      "Backend Alive.",
 	}, []string{"server", "host", "port"})
-
 }
 
 func Start(cfg config.MetricsConfig) {
-
 	if !cfg.Enabled {
 		log.Info("Metrics disabled")
 		metricsDisabled = true

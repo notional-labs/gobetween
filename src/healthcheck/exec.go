@@ -19,7 +19,6 @@ import (
  * Exec healthcheck
  */
 func exec(t core.Target, cfg config.HealthcheckConfig, result chan<- CheckResult) {
-
 	log := logging.For("healthcheck/exec")
 
 	execTimeout, _ := time.ParseDuration(cfg.Timeout)

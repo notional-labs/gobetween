@@ -29,7 +29,6 @@ type SniBalancer struct {
  * Elect backend using sni pre-processing
  */
 func (sniBalancer *SniBalancer) Elect(ctx core.Context, backends []*core.Backend) (*core.Backend, error) {
-
 	/* ------ try find matching to requesedSni backends ------ */
 
 	matchedBackends := sniBalancer.matchingBackends(ctx.Sni(), backends)
@@ -60,7 +59,6 @@ func (sniBalancer *SniBalancer) Elect(ctx core.Context, backends []*core.Backend
  * Filter out backends that match requestedSni
  */
 func (sniBalancer *SniBalancer) matchingBackends(requestedSni string, backends []*core.Backend) []*core.Backend {
-
 	log := logging.For("balance/middleware/sni")
 
 	var matchedBackends []*core.Backend
@@ -68,7 +66,6 @@ func (sniBalancer *SniBalancer) matchingBackends(requestedSni string, backends [
 	for _, backend := range backends {
 
 		match, err := sniBalancer.matchSni(requestedSni, backend.Sni)
-
 		if err != nil {
 			log.Error(err)
 			continue
@@ -86,7 +83,6 @@ func (sniBalancer *SniBalancer) matchingBackends(requestedSni string, backends [
  * Try match requested sni to actual backend sni
  */
 func (sniBalancer *SniBalancer) matchSni(requestedSni string, backendSni string) (bool, error) {
-
 	sniMatching := sniBalancer.SniConf.HostnameMatchingStrategy
 
 	switch sniMatching {
@@ -109,5 +105,4 @@ func (sniBalancer *SniBalancer) matchSni(requestedSni string, backendSni string)
 	default:
 		return false, errors.New("Unsupported sni matching mechanism: " + sniMatching)
 	}
-
 }

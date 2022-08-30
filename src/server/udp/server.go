@@ -27,8 +27,10 @@ import (
 	"github.com/yyyar/gobetween/src/utils"
 )
 
-const UDP_PACKET_SIZE = 65507
-const CLEANUP_EVERY = time.Second * 2
+const (
+	UDP_PACKET_SIZE = 65507
+	CLEANUP_EVERY   = time.Second * 2
+)
 
 var log = logging.For("udp/server")
 
@@ -117,7 +119,6 @@ func (cp *connPool) close() {
  * Creates new UDP server
  */
 func New(name string, cfg config.Server) (*Server, error) {
-
 	statsHandler := stats.NewHandler(name)
 	scheduler := &scheduler.Scheduler{
 		Balancer:     balance.New(nil, cfg.Balance),
@@ -158,7 +159,6 @@ func (this *Server) Cfg() config.Server {
  * Starts server
  */
 func (this *Server) Start() error {
-
 	// Start listening
 	if err := this.listen(); err != nil {
 		return fmt.Errorf("Could not start listening UDP: %v", err)
@@ -169,7 +169,6 @@ func (this *Server) Start() error {
 	this.serve()
 
 	go func() {
-
 		ticker := time.NewTicker(CLEANUP_EVERY)
 
 		for {
@@ -225,7 +224,6 @@ func (this *Server) listen() error {
  * Start serving
  */
 func (this *Server) serve() {
-
 	cfg := session.Config{
 		MaxRequests:        this.cfg.Udp.MaxRequests,
 		MaxResponses:       this.cfg.Udp.MaxResponses,
@@ -241,13 +239,11 @@ func (this *Server) serve() {
 
 	// Main loop goroutine - reads incoming data and decides what to do
 	go func() {
-
 		defer cp.close()
 
 		buf := make([]byte, UDP_PACKET_SIZE)
 		for {
 			n, clientAddr, err := this.serverConn.ReadFromUDP(buf)
-
 			if err != nil {
 				if atomic.LoadUint32(&this.stopped) == 1 {
 					return
@@ -265,10 +261,9 @@ func (this *Server) serve() {
 				}
 			}
 
-			//special case for single request mode
+			// special case for single request mode
 			if cfg.MaxRequests == 1 {
 				err := this.fireAndForget(cp, clientAddr, buf[:n])
-
 				if err != nil {
 					log.Errorf("Error sending data to backend: %v ", err)
 				}
@@ -293,7 +288,6 @@ func (this *Server) cleanup() {
 		if s.IsDone() {
 			delete(this.sessions, k)
 		}
-
 	}
 
 	this.scheduler.StatsHandler.Connections <- uint(len(this.sessions))
@@ -306,7 +300,6 @@ func (this *Server) electAndConnect(pool *connPool, clientAddr *net.UDPAddr) (ne
 	backend, err := this.scheduler.TakeBackend(core.UdpContext{
 		ClientAddr: *clientAddr,
 	})
-
 	if err != nil {
 		return nil, nil, fmt.Errorf("Could not elect backend for clientAddr %v: %v", clientAddr, err)
 	}
@@ -354,12 +347,12 @@ func (this *Server) getOrCreateSession(cfg session.Config, clientAddr *net.UDPAd
 
 	s, ok := this.sessions[key]
 
-	//session exists and is not done yet
+	// session exists and is not done yet
 	if ok && !s.IsDone() {
 		return s, nil
 	}
 
-	//session exists but should be replaced with a new one
+	// session exists but should be replaced with a new one
 	if ok {
 		go func() { s.Close() }()
 	}
@@ -385,7 +378,6 @@ func (this *Server) getOrCreateSession(cfg session.Config, clientAddr *net.UDPAd
  * Get the session and send data via chosen session
  */
 func (this *Server) proxy(cfg session.Config, clientAddr *net.UDPAddr, buf []byte) {
-
 	s, err := this.getOrCreateSession(cfg, clientAddr)
 	if err != nil {
 		log.Error(err)
@@ -397,14 +389,12 @@ func (this *Server) proxy(cfg session.Config, clientAddr *net.UDPAddr, buf []byt
 		log.Errorf("Could not write data to UDP 'session' %v: %v", s, err)
 		return
 	}
-
 }
 
 /**
  * Omit creating session, just send one packet of data
  */
 func (this *Server) fireAndForget(pool *connPool, clientAddr *net.UDPAddr, buf []byte) error {
-
 	conn, backend, err := this.electAndConnect(pool, clientAddr)
 	if err != nil {
 		return fmt.Errorf("Could not elect or connect to backend: %v", err)
@@ -422,7 +412,6 @@ func (this *Server) fireAndForget(pool *connPool, clientAddr *net.UDPAddr, buf [
 	this.scheduler.IncrementTx(*backend, uint(n))
 
 	return nil
-
 }
 
 /**

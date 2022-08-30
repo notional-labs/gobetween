@@ -21,7 +21,6 @@ type LeastconnBalancer struct{}
  * Elect backend using roundrobin strategy
  */
 func (b *LeastconnBalancer) Elect(context core.Context, backends []*core.Backend) (*core.Backend, error) {
-
 	if len(backends) == 0 {
 		return nil, errors.New("Can't elect backend, Backends empty")
 	}

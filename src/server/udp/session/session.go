@@ -17,12 +17,14 @@ const (
 	MAX_PACKETS_QUEUE = 10000
 )
 
-var log = logging.For("udp/server/session")
-var bufPool = sync.Pool{
-	New: func() interface{} {
-		return make([]byte, UDP_PACKET_SIZE)
-	},
-}
+var (
+	log     = logging.For("udp/server/session")
+	bufPool = sync.Pool{
+		New: func() interface{} {
+			return make([]byte, UDP_PACKET_SIZE)
+		},
+	}
+)
 
 type packet struct {
 	// pointer to object that has to be returned to buf pool
@@ -47,30 +49,29 @@ func (p packet) release() {
 }
 
 type Session struct {
-	//counters
+	// counters
 	sent uint64
 	recv uint64
 
-	//session config
+	// session config
 	cfg Config
 
 	clientAddr *net.UDPAddr
 
-	//connection to backend
+	// connection to backend
 	conn    net.Conn
 	backend core.Backend
 
-	//communication
+	// communication
 	out     chan packet
 	stopC   chan struct{}
 	stopped uint32
 
-	//scheduler
+	// scheduler
 	scheduler *scheduler.Scheduler
 }
 
 func NewSession(clientAddr *net.UDPAddr, conn net.Conn, backend core.Backend, scheduler *scheduler.Scheduler, cfg Config) *Session {
-
 	scheduler.IncrementConnection(backend)
 	s := &Session{
 		cfg:        cfg,
@@ -83,7 +84,6 @@ func NewSession(clientAddr *net.UDPAddr, conn net.Conn, backend core.Backend, sc
 	}
 
 	go func() {
-
 		var t *time.Timer
 		var tC <-chan time.Time
 
@@ -147,7 +147,6 @@ func NewSession(clientAddr *net.UDPAddr, conn net.Conn, backend core.Backend, sc
 
 			}
 		}
-
 	}()
 
 	return s
@@ -176,7 +175,6 @@ func (s *Session) Write(buf []byte) error {
  * packet it receives
  */
 func (s *Session) ListenResponses(sendTo *net.UDPConn) {
-
 	go func() {
 		b := make([]byte, UDP_PACKET_SIZE)
 
@@ -189,7 +187,6 @@ func (s *Session) ListenResponses(sendTo *net.UDPConn) {
 			}
 
 			n, err := s.conn.Read(b)
-
 			if err != nil {
 				if err, ok := err.(net.Error); ok && err.Timeout() {
 					return
@@ -204,7 +201,6 @@ func (s *Session) ListenResponses(sendTo *net.UDPConn) {
 			s.scheduler.IncrementRx(s.backend, uint(n))
 
 			m, err := sendTo.WriteToUDP(b[0:n], s.clientAddr)
-
 			if err != nil {
 				log.Errorf("Could not send backend response to client: %v", err)
 				return
