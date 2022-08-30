@@ -100,7 +100,7 @@ func jsonFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
 	// parse query to array to ensure right format and get length of it
 	parsedArray, err := parsed.QueryToArray(".")
 	if err != nil {
-		return nil, errors.New("Unexpected json in response")
+		return nil, errors.New("unexpected json in response")
 	}
 
 	var backends []core.Backend
