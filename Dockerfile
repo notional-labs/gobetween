@@ -2,9 +2,8 @@ ARG BASE_IMAGE=scratch
 
 # ---------------------  dev (build) image --------------------- #
 
-FROM golang:1.19-alpine as builder
+FROM golang:1.19 as builder
 
-RUN apk add git make gcc
 
 RUN mkdir -p /opt/gobetween
 WORKDIR /opt/gobetween
