@@ -4,8 +4,7 @@ ARG BASE_IMAGE=scratch
 
 FROM golang:1.19-alpine as builder
 
-RUN apk add git
-RUN apk add make
+RUN apk add git make gcc
 
 RUN mkdir -p /opt/gobetween
 WORKDIR /opt/gobetween
