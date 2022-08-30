@@ -295,6 +295,9 @@ func lxdAuthenticateToServer(client lxd.ContainerServer, remote string, password
 	if srv.Auth == "trusted" {
 		return nil
 	}
+	if err != nil {
+		return err
+	}
 
 	req := lxd_api.CertificatesPost{
 		Password: password,
@@ -303,7 +306,7 @@ func lxdAuthenticateToServer(client lxd.ContainerServer, remote string, password
 
 	err = client.CreateCertificate(req)
 	if err != nil {
-		return fmt.Errorf("Unable to authenticate with remote server: %s", err)
+		return fmt.Errorf("unable to authenticate with remote server: %s", err)
 	}
 
 	_, _, err = client.GetServer()

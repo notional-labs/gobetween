@@ -7,7 +7,7 @@ package cmd
  */
 
 import (
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 
@@ -46,7 +46,7 @@ var FromUrlCmd = &cobra.Command{
 		defer res.Body.Close()
 
 		// Read response
-		content, err := ioutil.ReadAll(res.Body)
+		content, err := io.ReadAll(res.Body)
 		if err != nil {
 			log.Fatal(err)
 		}

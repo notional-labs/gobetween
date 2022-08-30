@@ -100,7 +100,7 @@ func (sniBalancer *SniBalancer) matchSni(requestedSni string, backendSni string)
 		return regexp.MatchString(requestedSni), nil
 
 	case "exact":
-		return strings.ToLower(requestedSni) == strings.ToLower(backendSni), nil
+		return strings.EqualFold(requestedSni, backendSni), nil
 
 	default:
 		return false, errors.New("Unsupported sni matching mechanism: " + sniMatching)

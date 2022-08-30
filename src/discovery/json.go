@@ -10,7 +10,7 @@ package discovery
 import (
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strconv"
 	"time"
@@ -86,7 +86,7 @@ func jsonFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
 	defer res.Body.Close()
 
 	// Read response
-	content, err := ioutil.ReadAll(res.Body)
+	content, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
 	}

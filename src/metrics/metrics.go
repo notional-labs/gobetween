@@ -23,9 +23,9 @@ var (
 	log                  = logging.For("metrics")
 
 	buildInfo *prometheus.GaugeVec
-	version   string
-	revision  string
-	branch    string
+	version   string //nolint:unused
+	revision  string //nolint:unused
+	branch    string //nolint:unused
 
 	serverCount             *prometheus.GaugeVec
 	serverActiveConnections *prometheus.GaugeVec

@@ -154,7 +154,7 @@ func (this *Scheduler) Start() {
 				backendsPushTicker.Stop()
 				this.Discovery.Stop()
 				this.Healthcheck.Stop()
-				metrics.RemoveServer(fmt.Sprintf("%s", this.StatsHandler.Name), this.backends)
+				metrics.RemoveServer(this.StatsHandler.Name, this.backends)
 				return
 			}
 		}
@@ -200,7 +200,7 @@ func (this *Scheduler) HandleBackendStatsChange(target core.Target, bs *counters
 	backend.Stats.RxSecond = bs.RxSecond
 	backend.Stats.TxSecond = bs.TxSecond
 
-	metrics.ReportHandleBackendStatsChange(fmt.Sprintf("%s", this.StatsHandler.Name), target, this.backends)
+	metrics.ReportHandleBackendStatsChange(this.StatsHandler.Name, target, this.backends)
 }
 
 /**

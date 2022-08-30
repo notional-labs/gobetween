@@ -7,8 +7,8 @@ package cmd
  */
 
 import (
-	"io/ioutil"
 	"log"
+	"os"
 
 	"github.com/notional-labs/gobetween/src/config"
 	"github.com/notional-labs/gobetween/src/info"
@@ -36,7 +36,7 @@ var FromFileCmd = &cobra.Command{
 			return
 		}
 
-		data, err := ioutil.ReadFile(args[0])
+		data, err := os.ReadFile(args[0])
 		if err != nil {
 			log.Fatal(err)
 		}

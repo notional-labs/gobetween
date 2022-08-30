@@ -8,7 +8,7 @@ package discovery
  */
 
 import (
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 	"time"
@@ -61,7 +61,7 @@ func plaintextFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
 	defer res.Body.Close()
 
 	// Read response
-	content, err := ioutil.ReadAll(res.Body)
+	content, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
 	}

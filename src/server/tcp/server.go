@@ -81,7 +81,6 @@ type Server struct {
 func New(name string, cfg config.Server) (*Server, error) {
 	log := logging.For("server")
 
-	var err error = nil
 	statsHandler := stats.NewHandler(name)
 
 	// Create server
@@ -103,6 +102,7 @@ func New(name string, cfg config.Server) (*Server, error) {
 
 	/* Add access if needed */
 	if cfg.Access != nil {
+		var err error
 		server.access, err = access.NewAccess(cfg.Access)
 		if err != nil {
 			return nil, err
@@ -111,6 +111,7 @@ func New(name string, cfg config.Server) (*Server, error) {
 
 	/* Add tls configs if needed */
 
+	var err error
 	server.backendsTlsConfg, err = tlsutil.MakeBackendTLSConfig(cfg.BackendsTls)
 	if err != nil {
 		return nil, err
@@ -241,8 +242,8 @@ func (this *Server) wrap(conn net.Conn, sniEnabled bool) {
 	}
 
 	this.connect <- &core.TcpContext{
-		hostname,
-		conn,
+		Hostname: hostname,
+		Conn:     conn,
 	}
 }
 

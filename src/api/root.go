@@ -28,7 +28,7 @@ func attachRoot(app *gin.RouterGroup) {
 			"pid":           os.Getpid(),
 			"time":          time.Now(),
 			"startTime":     info.StartTime,
-			"uptime":        time.Now().Sub(info.StartTime).String(),
+			"uptime":        time.Since(info.StartTime).String(),
 			"version":       info.Version,
 			"configuration": info.Configuration,
 		})

@@ -40,7 +40,10 @@ var FromConsulCmd = &cobra.Command{
 	Long:  `Start using config from the Consul key-value storage`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 1 {
-			cmd.Help()
+			err := cmd.Help()
+			if err != nil {
+				panic(err)
+			}
 			return
 		}
 
