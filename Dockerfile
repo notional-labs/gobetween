@@ -10,7 +10,7 @@ WORKDIR /opt/gobetween
 
 COPY . .
 
-RUN go install ./...
+RUN go build .
 
 # --------------------- final image --------------------- #
 
@@ -19,7 +19,7 @@ FROM $BASE_IMAGE
 WORKDIR /
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-COPY --from=builder /opt/gobetween/bin/gobetween  .
+COPY --from=builder /opt/gobetween/gobetween  .
 
 CMD ["/gobetween", "-c", "/etc/gobetween/conf/gobetween.toml"]
 
