@@ -93,7 +93,7 @@ func probe(t core.Target, cfg config.HealthcheckConfig, result chan<- CheckResul
 	}
 
 	actual := make([]byte, recvLen)
-	n, err = io.ReadFull(conn, actual)
+	_, err = io.ReadFull(conn, actual)
 	if err != nil {
 		log.Debugf("Could not read from backend: %v", err)
 		return

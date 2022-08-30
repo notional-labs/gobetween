@@ -227,7 +227,7 @@ func Delete(name string) error {
 	delete(servers.m, name)
 
 	for _, s := range services {
-		s.Disable(server)
+		s.Disable(server) //nolint:errcheck
 	}
 
 	return nil

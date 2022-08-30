@@ -281,7 +281,10 @@ func lxdGetRemoteCertificate(config *lxd_config.Config, remote string) error {
 		return err
 	}
 
-	pem.Encode(certOut, &pem.Block{Type: "CERTIFICATE", Bytes: certificate.Raw})
+	err = pem.Encode(certOut, &pem.Block{Type: "CERTIFICATE", Bytes: certificate.Raw})
+	if err != nil {
+		return err
+	}
 	certOut.Close()
 
 	return nil

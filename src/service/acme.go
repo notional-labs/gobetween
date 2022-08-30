@@ -53,7 +53,7 @@ func NewAcmeService(cfg config.Config) core.Service {
 
 	// accept http challenge
 	if cfg.Acme.Challenge == "http" {
-		go http.ListenAndServe(cfg.Acme.HttpBind, a.certMan.HTTPHandler(nil))
+		go http.ListenAndServe(cfg.Acme.HttpBind, a.certMan.HTTPHandler(nil)) //nolint:errcheck
 	}
 
 	return a

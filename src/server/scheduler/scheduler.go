@@ -7,7 +7,6 @@ package scheduler
  */
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/notional-labs/gobetween/src/core"
@@ -215,7 +214,7 @@ func (this *Scheduler) HandleBackendLiveChange(target core.Target, live bool) {
 
 	backend.Stats.Live = live
 
-	metrics.ReportHandleBackendLiveChange(fmt.Sprintf("%s", this.StatsHandler.Name), target, live)
+	metrics.ReportHandleBackendLiveChange(this.StatsHandler.Name, target, live)
 }
 
 /**
@@ -321,7 +320,7 @@ func (this *Scheduler) HandleOp(op Op) {
 		log.Warn("Don't know how to handle op ", op.op)
 	}
 
-	metrics.ReportHandleOp(fmt.Sprintf("%s", this.StatsHandler.Name), op.target, this.backends)
+	metrics.ReportHandleOp(this.StatsHandler.Name, op.target, this.backends)
 }
 
 /**

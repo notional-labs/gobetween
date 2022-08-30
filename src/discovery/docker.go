@@ -122,7 +122,7 @@ func dockerDetermineContainerHost(client *docker.Client, id string, cfg config.D
 
 	if cfg.DockerContainerHostEnvVar != "" {
 
-		container, err := client.InspectContainer(id)
+		container, err := client.InspectContainer(id) //nolint:staticcheck // if this gives us container problems we should update it.
 
 		if err != nil {
 			log.Warn(err)

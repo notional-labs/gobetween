@@ -62,7 +62,7 @@ var RootCmd = &cobra.Command{
 		}
 
 		if configPath == "" {
-			cmd.Help()
+			cmd.Help() //nolint:errcheck
 			return
 		}
 

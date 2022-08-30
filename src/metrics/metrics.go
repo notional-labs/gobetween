@@ -257,7 +257,7 @@ func ReportHandleBackendStatsChange(server string, target core.Target, backends 
 		return
 	}
 
-	backend, _ := backends[target]
+	backend := backends[target]
 
 	serverCount.WithLabelValues(server).Set(float64(len(backends)))
 
@@ -272,7 +272,7 @@ func ReportHandleOp(server string, target core.Target, backends map[core.Target]
 		return
 	}
 
-	backend, _ := backends[target]
+	backend := backends[target]
 
 	backendActiveConnections.WithLabelValues(server, target.Host, target.Port).Set(float64(backend.Stats.ActiveConnections))
 	backendRefusedConnections.WithLabelValues(server, target.Host, target.Port).Set(float64(backend.Stats.RefusedConnections))

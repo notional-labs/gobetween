@@ -33,7 +33,7 @@ var FromUrlCmd = &cobra.Command{
 	Short: "Start using config from URL",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 1 {
-			cmd.Help()
+			cmd.Help() //nolint:errcheck
 			return
 		}
 

@@ -39,7 +39,7 @@ func attachServers(app *gin.RouterGroup) {
 	 */
 	app.DELETE("/servers/:name", func(c *gin.Context) {
 		name := c.Param("name")
-		manager.Delete(name)
+		manager.Delete(name) //nolint:errcheck
 		c.IndentedJSON(http.StatusOK, nil)
 	})
 
