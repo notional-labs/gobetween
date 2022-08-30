@@ -7,14 +7,13 @@ package counters
  */
 
 import (
-	"github.com/yyyar/gobetween/core"
+	"github.com/yyyar/gobetween/src/core"
 )
 
 /**
  * Bandwidth stats object
  */
 type BandwidthStats struct {
-
 	// Total received bytes
 	RxTotal uint64
 

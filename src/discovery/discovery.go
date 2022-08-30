@@ -9,9 +9,9 @@ package discovery
 import (
 	"time"
 
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/core"
-	"github.com/yyyar/gobetween/logging"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/core"
+	"github.com/yyyar/gobetween/src/logging"
 )
 
 /**
@@ -56,7 +56,6 @@ type DiscoveryOpts struct {
  * Discovery
  */
 type Discovery struct {
-
 	/**
 	 * Cached backends
 	 */
@@ -92,7 +91,6 @@ type Discovery struct {
  * Pull / fetch backends loop
  */
 func (this *Discovery) Start() {
-
 	log := logging.For("discovery")
 
 	this.out = make(chan []core.Backend)
@@ -174,7 +172,6 @@ func (this *Discovery) send() bool {
  * return false if waiting was interrupted with stop
  */
 func (this *Discovery) wait(interval time.Duration) bool {
-
 	t := time.NewTimer(interval)
 
 	select {
@@ -187,7 +184,6 @@ func (this *Discovery) wait(interval time.Duration) bool {
 		}
 		return false
 	}
-
 }
 
 /**

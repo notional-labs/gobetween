@@ -8,14 +8,13 @@ package core
  */
 
 import (
-	"github.com/yyyar/gobetween/config"
+	"github.com/yyyar/gobetween/src/config"
 )
 
 /**
  * Server interface
  */
 type Server interface {
-
 	/**
 	 * Start server
 	 */

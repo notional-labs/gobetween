@@ -12,20 +12,18 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yyyar/gobetween/info"
-	"github.com/yyyar/gobetween/manager"
+	"github.com/yyyar/gobetween/src/info"
+	"github.com/yyyar/gobetween/src/manager"
 )
 
 /**
  * Attaches / handlers
  */
 func attachRoot(app *gin.RouterGroup) {
-
 	/**
 	 * Global stats
 	 */
 	app.GET("/", func(c *gin.Context) {
-
 		c.IndentedJSON(http.StatusOK, gin.H{
 			"pid":           os.Getpid(),
 			"time":          time.Now(),

@@ -11,10 +11,10 @@ import (
 	"log"
 
 	"github.com/spf13/cobra"
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/info"
-	"github.com/yyyar/gobetween/utils"
-	"github.com/yyyar/gobetween/utils/codec"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/info"
+	"github.com/yyyar/gobetween/src/utils"
+	"github.com/yyyar/gobetween/src/utils/codec"
 )
 
 /**
@@ -31,7 +31,6 @@ var FromFileCmd = &cobra.Command{
 	Use:   "from-file <path>",
 	Short: "Start using config from file",
 	Run: func(cmd *cobra.Command, args []string) {
-
 		if len(args) != 1 {
 			cmd.Help()
 			return

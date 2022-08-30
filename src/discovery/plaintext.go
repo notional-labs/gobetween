@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yyyar/gobetween/config"
-	"github.com/yyyar/gobetween/core"
-	"github.com/yyyar/gobetween/logging"
-	"github.com/yyyar/gobetween/utils"
-	"github.com/yyyar/gobetween/utils/parsers"
+	"github.com/yyyar/gobetween/src/config"
+	"github.com/yyyar/gobetween/src/core"
+	"github.com/yyyar/gobetween/src/logging"
+	"github.com/yyyar/gobetween/src/utils"
+	"github.com/yyyar/gobetween/src/utils/parsers"
 )
 
 const (
@@ -29,7 +29,6 @@ const (
  * Create new Discovery with Plaintext fetch func
  */
 func NewPlaintextDiscovery(cfg config.DiscoveryConfig) interface{} {
-
 	if cfg.PlaintextRegexpPattern == "" {
 		cfg.PlaintextRegexpPattern = parsers.DEFAULT_BACKEND_PATTERN
 	}
@@ -47,7 +46,6 @@ func NewPlaintextDiscovery(cfg config.DiscoveryConfig) interface{} {
  * Fetch / refresh backends from URL with plain text
  */
 func plaintextFetch(cfg config.DiscoveryConfig) (*[]core.Backend, error) {
-
 	log := logging.For("plaintextFetch")
 
 	log.Info("Fetching ", cfg.PlaintextEndpoint)

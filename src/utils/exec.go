@@ -11,14 +11,13 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/yyyar/gobetween/logging"
+	"github.com/yyyar/gobetween/src/logging"
 )
 
 /**
  * Exec with timeout
  */
 func ExecTimeout(timeout time.Duration, params ...string) (string, error) {
-
 	log := logging.For("execTimeout")
 
 	cmd := exec.Command(params[0], params[1:]...)

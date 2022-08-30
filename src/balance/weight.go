@@ -10,8 +10,8 @@ import (
 	"errors"
 	"math/rand"
 
-	"github.com/yyyar/gobetween/core"
-	"github.com/yyyar/gobetween/logging"
+	"github.com/yyyar/gobetween/src/core"
+	"github.com/yyyar/gobetween/src/logging"
 )
 
 /**
@@ -26,7 +26,6 @@ var log = logging.For("balance/weight")
  * See https://tools.ietf.org/html/rfc2782, Priority and Weight sections
  */
 func (b *WeightBalancer) Elect(context core.Context, backends []*core.Backend) (*core.Backend, error) {
-
 	if len(backends) == 0 {
 		return nil, errors.New("Can't elect backend, Backends empty")
 	}

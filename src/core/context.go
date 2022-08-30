@@ -46,7 +46,6 @@ func (t TcpContext) Sni() string {
  * Proxy udp context
  */
 type UdpContext struct {
-
 	/**
 	 * Current client remote address
 	 */

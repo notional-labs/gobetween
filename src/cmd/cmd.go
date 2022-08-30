@@ -7,7 +7,7 @@ package cmd
  */
 
 import (
-	"github.com/yyyar/gobetween/config"
+	"github.com/yyyar/gobetween/src/config"
 )
 
 /**
