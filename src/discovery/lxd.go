@@ -189,12 +189,12 @@ func lxdBuildClient(cfg config.DiscoveryConfig) (lxd.ContainerServer, error) {
 					log.Debug("Retrieving LXD server certificate")
 					err := lxdGetRemoteCertificate(lxdConfig, cfg.LXDServerRemoteName)
 					if err != nil {
-						return nil, fmt.Errorf("Could obtain LXD server certificate: %s", err)
+						return nil, fmt.Errorf("could obtain LXD server certificate: %s", err)
 					}
 				} else {
-					err := fmt.Errorf("Unable to communicate with LXD server. Either set " +
+					err := fmt.Errorf("unable to communicate with LXD server. Either set " +
 						"lxd_accept_server_cert to true or add the LXD server out of " +
-						"band of gobetween and try again.")
+						"band of gobetween and try again")
 					return nil, err
 				}
 			}
@@ -272,7 +272,7 @@ func lxdGetRemoteCertificate(config *lxd_config.Config, remote string) error {
 
 	serverCertDir := config.ConfigPath("servercerts")
 	if err := os.MkdirAll(serverCertDir, 0o750); err != nil {
-		return fmt.Errorf("Could not create server cert dir: %s", err)
+		return fmt.Errorf("could not create server cert dir: %s", err)
 	}
 
 	certf := fmt.Sprintf("%s/%s.crt", serverCertDir, remote)
@@ -359,7 +359,7 @@ func lxdDetermineContainerIP(client lxd.ContainerServer, container, iface, addrT
 	}
 
 	if containerIP == "" {
-		return "", fmt.Errorf("Unable to determine IP address for LXD container %s", container)
+		return "", fmt.Errorf("unable to determine IP address for LXD container %s", container)
 	}
 
 	return containerIP, nil

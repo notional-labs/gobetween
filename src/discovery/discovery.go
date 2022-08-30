@@ -90,14 +90,14 @@ type Discovery struct {
 /**
  * Pull / fetch backends loop
  */
-func (this *Discovery) Start() {
+func (discovery *Discovery) Start() {
 	log := logging.For("discovery")
 
-	this.out = make(chan []core.Backend)
-	this.stop = make(chan bool)
+	discovery.out = make(chan []core.Backend)
+	discovery.stop = make(chan bool)
 
 	// Prepare interval
-	interval, err := time.ParseDuration(this.cfg.Interval)
+	interval, err := time.ParseDuration(discovery.cfg.Interval)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -105,29 +105,29 @@ func (this *Discovery) Start() {
 	// TODO: rewrite with channels for stop
 	go func() {
 		for {
-			backends, err := this.fetch(this.cfg)
+			backends, err := discovery.fetch(discovery.cfg)
 
 			select {
-			case <-this.stop:
-				log.Info("Stopping discovery ", this.cfg)
+			case <-discovery.stop:
+				log.Info("Stopping discovery ", discovery.cfg)
 				return
 			default:
 			}
 
 			if err != nil {
-				log.Error(this.cfg.Kind, " error ", err, " retrying in ", this.opts.RetryWaitDuration.String())
-				log.Info("Applying failpolicy ", this.cfg.Failpolicy)
+				log.Error(discovery.cfg.Kind, " error ", err, " retrying in ", discovery.opts.RetryWaitDuration.String())
+				log.Info("Applying failpolicy ", discovery.cfg.Failpolicy)
 
-				if this.cfg.Failpolicy == "setempty" {
-					this.backends = &[]core.Backend{}
-					if !this.send() {
-						log.Info("Stopping discovery ", this.cfg)
+				if discovery.cfg.Failpolicy == "setempty" {
+					discovery.backends = &[]core.Backend{}
+					if !discovery.send() {
+						log.Info("Stopping discovery ", discovery.cfg)
 						return
 					}
 				}
 
-				if !this.wait(this.opts.RetryWaitDuration) {
-					log.Info("Stopping discovery ", this.cfg)
+				if !discovery.wait(discovery.opts.RetryWaitDuration) {
+					log.Info("Stopping discovery ", discovery.cfg)
 					return
 				}
 
@@ -135,9 +135,9 @@ func (this *Discovery) Start() {
 			}
 
 			// cache
-			this.backends = backends
-			if !this.send() {
-				log.Info("Stopping discovery ", this.cfg)
+			discovery.backends = backends
+			if !discovery.send() {
+				log.Info("Stopping discovery ", discovery.cfg)
 				return
 			}
 
@@ -147,21 +147,21 @@ func (this *Discovery) Start() {
 				return
 			}
 
-			if !this.wait(interval) {
-				log.Info("Stopping discovery ", this.cfg)
+			if !discovery.wait(interval) {
+				log.Info("Stopping discovery ", discovery.cfg)
 				return
 			}
 		}
 	}()
 }
 
-func (this *Discovery) send() bool {
+func (discovery *Discovery) send() bool {
 	// out if not stopped
 	select {
-	case <-this.stop:
+	case <-discovery.stop:
 		return false
 	default:
-		this.out <- *this.backends
+		discovery.out <- *discovery.backends
 		return true
 	}
 }
@@ -171,14 +171,14 @@ func (this *Discovery) send() bool {
  * returns true if waiting was successfull
  * return false if waiting was interrupted with stop
  */
-func (this *Discovery) wait(interval time.Duration) bool {
+func (discovery *Discovery) wait(interval time.Duration) bool {
 	t := time.NewTimer(interval)
 
 	select {
 	case <-t.C:
 		return true
 
-	case <-this.stop:
+	case <-discovery.stop:
 		if !t.Stop() {
 			<-t.C
 		}
@@ -189,13 +189,13 @@ func (this *Discovery) wait(interval time.Duration) bool {
 /**
  * Stop discovery
  */
-func (this *Discovery) Stop() {
-	this.stop <- true
+func (discovery *Discovery) Stop() {
+	discovery.stop <- true
 }
 
 /**
  * Returns backends channel
  */
-func (this *Discovery) Discover() <-chan []core.Backend {
-	return this.out
+func (discovery *Discovery) Discover() <-chan []core.Backend {
+	return discovery.out
 }
