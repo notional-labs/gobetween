@@ -13,10 +13,10 @@ import (
 	"time"
 
 	consul "github.com/hashicorp/consul/api"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/utils"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/utils"
 )
 
 const (

@@ -1,4 +1,4 @@
-module github.com/yyyar/gobetween
+module github.com/notional-labs/gobetween
 
 go 1.19
 

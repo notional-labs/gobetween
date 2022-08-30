@@ -10,9 +10,9 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/manager"
-	"github.com/yyyar/gobetween/src/stats"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/manager"
+	"github.com/notional-labs/gobetween/src/stats"
 )
 
 /**

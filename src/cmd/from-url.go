@@ -11,11 +11,11 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/info"
+	"github.com/notional-labs/gobetween/src/utils"
+	"github.com/notional-labs/gobetween/src/utils/codec"
 	"github.com/spf13/cobra"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/info"
-	"github.com/yyyar/gobetween/src/utils"
-	"github.com/yyyar/gobetween/src/utils/codec"
 )
 
 /**

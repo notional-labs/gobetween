@@ -12,8 +12,8 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yyyar/gobetween/src/info"
-	"github.com/yyyar/gobetween/src/manager"
+	"github.com/notional-labs/gobetween/src/info"
+	"github.com/notional-labs/gobetween/src/manager"
 )
 
 /**

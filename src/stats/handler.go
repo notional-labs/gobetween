@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/metrics"
-	"github.com/yyyar/gobetween/src/stats/counters"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/metrics"
+	"github.com/notional-labs/gobetween/src/stats/counters"
 )
 
 const (

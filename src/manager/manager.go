@@ -15,13 +15,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/server"
-	"github.com/yyyar/gobetween/src/service"
-	"github.com/yyyar/gobetween/src/utils/codec"
-	"github.com/yyyar/gobetween/src/utils/profiler"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/server"
+	"github.com/notional-labs/gobetween/src/service"
+	"github.com/notional-labs/gobetween/src/utils/codec"
+	"github.com/notional-labs/gobetween/src/utils/profiler"
 )
 
 /* Map of app current servers */

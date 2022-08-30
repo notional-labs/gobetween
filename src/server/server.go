@@ -10,10 +10,10 @@ package server
 import (
 	"errors"
 
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/server/tcp"
-	"github.com/yyyar/gobetween/src/server/udp"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/server/tcp"
+	"github.com/notional-labs/gobetween/src/server/udp"
 )
 
 /**

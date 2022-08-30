@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/notional-labs/gobetween/src/info"
+	"github.com/notional-labs/gobetween/src/utils/pidfile"
 	"github.com/spf13/cobra"
-	"github.com/yyyar/gobetween/src/info"
-	"github.com/yyyar/gobetween/src/utils/pidfile"
 )
 
 /* Persistent parsed options */

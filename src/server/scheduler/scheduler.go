@@ -10,13 +10,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/discovery"
-	"github.com/yyyar/gobetween/src/healthcheck"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/metrics"
-	"github.com/yyyar/gobetween/src/stats"
-	"github.com/yyyar/gobetween/src/stats/counters"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/discovery"
+	"github.com/notional-labs/gobetween/src/healthcheck"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/metrics"
+	"github.com/notional-labs/gobetween/src/stats"
+	"github.com/notional-labs/gobetween/src/stats/counters"
 )
 
 /**

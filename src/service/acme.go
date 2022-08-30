@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/server/tcp"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/server/tcp"
 	"golang.org/x/crypto/acme/autocert"
 )
 

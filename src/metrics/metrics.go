@@ -5,13 +5,13 @@ import (
 	"net/http"
 	"runtime"
 
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/info"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/stats/counters"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/info"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/stats/counters"
 )
 
 const (
