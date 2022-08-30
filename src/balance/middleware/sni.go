@@ -12,9 +12,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/logging"
 )
 
 /**
@@ -100,7 +100,7 @@ func (sniBalancer *SniBalancer) matchSni(requestedSni string, backendSni string)
 		return regexp.MatchString(requestedSni), nil
 
 	case "exact":
-		return strings.ToLower(requestedSni) == strings.ToLower(backendSni), nil
+		return strings.EqualFold(requestedSni, backendSni), nil
 
 	default:
 		return false, errors.New("Unsupported sni matching mechanism: " + sniMatching)

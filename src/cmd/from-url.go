@@ -7,15 +7,15 @@ package cmd
  */
 
 import (
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/info"
+	"github.com/notional-labs/gobetween/src/utils"
+	"github.com/notional-labs/gobetween/src/utils/codec"
 	"github.com/spf13/cobra"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/info"
-	"github.com/yyyar/gobetween/src/utils"
-	"github.com/yyyar/gobetween/src/utils/codec"
 )
 
 /**
@@ -33,7 +33,7 @@ var FromUrlCmd = &cobra.Command{
 	Short: "Start using config from URL",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 1 {
-			cmd.Help()
+			cmd.Help() //nolint:errcheck
 			return
 		}
 
@@ -46,7 +46,7 @@ var FromUrlCmd = &cobra.Command{
 		defer res.Body.Close()
 
 		// Read response
-		content, err := ioutil.ReadAll(res.Body)
+		content, err := io.ReadAll(res.Body)
 		if err != nil {
 			log.Fatal(err)
 		}

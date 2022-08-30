@@ -15,9 +15,9 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/logging"
 )
 
 func probe(t core.Target, cfg config.HealthcheckConfig, result chan<- CheckResult) {
@@ -93,7 +93,7 @@ func probe(t core.Target, cfg config.HealthcheckConfig, result chan<- CheckResul
 	}
 
 	actual := make([]byte, recvLen)
-	n, err = io.ReadFull(conn, actual)
+	_, err = io.ReadFull(conn, actual)
 	if err != nil {
 		log.Debugf("Could not read from backend: %v", err)
 		return

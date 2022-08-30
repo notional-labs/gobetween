@@ -7,7 +7,7 @@ package stats
  */
 
 import (
-	"github.com/yyyar/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/core"
 )
 
 /**

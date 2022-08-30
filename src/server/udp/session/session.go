@@ -7,9 +7,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/server/scheduler"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/server/scheduler"
 )
 
 const (
@@ -45,7 +45,7 @@ func (p packet) release() {
 	if p.payload == nil {
 		return
 	}
-	bufPool.Put(p.payload)
+	bufPool.Put(p.payload) //nolint:staticcheck
 }
 
 type Session struct {
@@ -163,7 +163,7 @@ func (s *Session) Write(buf []byte) error {
 	select {
 	case s.out <- packet{dup, n}:
 	default:
-		bufPool.Put(dup)
+		bufPool.Put(dup) //nolint:staticcheck
 	}
 
 	return nil
@@ -183,7 +183,7 @@ func (s *Session) ListenResponses(sendTo *net.UDPConn) {
 		for {
 
 			if s.cfg.BackendIdleTimeout > 0 {
-				s.conn.SetReadDeadline(time.Now().Add(s.cfg.BackendIdleTimeout))
+				s.conn.SetReadDeadline(time.Now().Add(s.cfg.BackendIdleTimeout)) //nolint:errcheck
 			}
 
 			n, err := s.conn.Read(b)

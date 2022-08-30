@@ -7,14 +7,14 @@ package cmd
  */
 
 import (
-	"io/ioutil"
 	"log"
+	"os"
 
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/info"
+	"github.com/notional-labs/gobetween/src/utils"
+	"github.com/notional-labs/gobetween/src/utils/codec"
 	"github.com/spf13/cobra"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/info"
-	"github.com/yyyar/gobetween/src/utils"
-	"github.com/yyyar/gobetween/src/utils/codec"
 )
 
 /**
@@ -32,11 +32,11 @@ var FromFileCmd = &cobra.Command{
 	Short: "Start using config from file",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 1 {
-			cmd.Help()
+			cmd.Help() //nolint:errcheck
 			return
 		}
 
-		data, err := ioutil.ReadFile(args[0])
+		data, err := os.ReadFile(args[0])
 		if err != nil {
 			log.Fatal(err)
 		}

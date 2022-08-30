@@ -14,17 +14,17 @@ import (
 	"time"
 
 	"github.com/eric-lindau/udpfacade"
-	"github.com/yyyar/gobetween/src/balance"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/discovery"
-	"github.com/yyyar/gobetween/src/healthcheck"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/server/modules/access"
-	"github.com/yyyar/gobetween/src/server/scheduler"
-	"github.com/yyyar/gobetween/src/server/udp/session"
-	"github.com/yyyar/gobetween/src/stats"
-	"github.com/yyyar/gobetween/src/utils"
+	"github.com/notional-labs/gobetween/src/balance"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/discovery"
+	"github.com/notional-labs/gobetween/src/healthcheck"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/server/modules/access"
+	"github.com/notional-labs/gobetween/src/server/scheduler"
+	"github.com/notional-labs/gobetween/src/server/udp/session"
+	"github.com/notional-labs/gobetween/src/stats"
+	"github.com/notional-labs/gobetween/src/utils"
 )
 
 const (

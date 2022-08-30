@@ -12,8 +12,8 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yyyar/gobetween/src/info"
-	"github.com/yyyar/gobetween/src/manager"
+	"github.com/notional-labs/gobetween/src/info"
+	"github.com/notional-labs/gobetween/src/manager"
 )
 
 /**
@@ -28,7 +28,7 @@ func attachRoot(app *gin.RouterGroup) {
 			"pid":           os.Getpid(),
 			"time":          time.Now(),
 			"startTime":     info.StartTime,
-			"uptime":        time.Now().Sub(info.StartTime).String(),
+			"uptime":        time.Since(info.StartTime).String(),
 			"version":       info.Version,
 			"configuration": info.Configuration,
 		})

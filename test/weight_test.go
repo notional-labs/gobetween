@@ -6,16 +6,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yyyar/gobetween/src/balance"
-	"github.com/yyyar/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/balance"
+	"github.com/notional-labs/gobetween/src/core"
 )
 
 func TestOnlyBestPriorityBackendsElected(t *testing.T) {
 	rand.Seed(time.Now().Unix())
 	balancer := &balance.WeightBalancer{}
-	var context core.Context
 
-	context = DummyContext{}
+	context := DummyContext{}
 
 	backends := []*core.Backend{
 		{
@@ -79,9 +78,8 @@ func TestOnlyBestPriorityBackendsElected(t *testing.T) {
 func TestAllWeightsEqualTo0Distribution(t *testing.T) {
 	rand.Seed(time.Now().Unix())
 	balancer := &balance.WeightBalancer{}
-	var context core.Context
 
-	context = DummyContext{}
+	context := DummyContext{}
 
 	backends := []*core.Backend{
 		{
@@ -130,9 +128,8 @@ func TestAllWeightsEqualTo0Distribution(t *testing.T) {
 func TestWeightDistribution(t *testing.T) {
 	rand.Seed(time.Now().Unix())
 	balancer := &balance.WeightBalancer{}
-	var context core.Context
 
-	context = DummyContext{}
+	context := DummyContext{}
 
 	backends := []*core.Backend{
 		{

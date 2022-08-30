@@ -17,10 +17,10 @@ import (
 	lxd_config "github.com/lxc/lxd/lxc/config"
 	"github.com/lxc/lxd/shared"
 	lxd_api "github.com/lxc/lxd/shared/api"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/utils"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/utils"
 )
 
 const (
@@ -281,7 +281,10 @@ func lxdGetRemoteCertificate(config *lxd_config.Config, remote string) error {
 		return err
 	}
 
-	pem.Encode(certOut, &pem.Block{Type: "CERTIFICATE", Bytes: certificate.Raw})
+	err = pem.Encode(certOut, &pem.Block{Type: "CERTIFICATE", Bytes: certificate.Raw})
+	if err != nil {
+		return err
+	}
 	certOut.Close()
 
 	return nil
@@ -295,6 +298,9 @@ func lxdAuthenticateToServer(client lxd.ContainerServer, remote string, password
 	if srv.Auth == "trusted" {
 		return nil
 	}
+	if err != nil {
+		return err
+	}
 
 	req := lxd_api.CertificatesPost{
 		Password: password,
@@ -303,7 +309,7 @@ func lxdAuthenticateToServer(client lxd.ContainerServer, remote string, password
 
 	err = client.CreateCertificate(req)
 	if err != nil {
-		return fmt.Errorf("Unable to authenticate with remote server: %s", err)
+		return fmt.Errorf("unable to authenticate with remote server: %s", err)
 	}
 
 	_, _, err = client.GetServer()

@@ -9,7 +9,7 @@ package balance
 import (
 	"errors"
 
-	"github.com/yyyar/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/core"
 )
 
 /**

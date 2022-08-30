@@ -7,16 +7,15 @@ package scheduler
  */
 
 import (
-	"fmt"
 	"time"
 
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/discovery"
-	"github.com/yyyar/gobetween/src/healthcheck"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/metrics"
-	"github.com/yyyar/gobetween/src/stats"
-	"github.com/yyyar/gobetween/src/stats/counters"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/discovery"
+	"github.com/notional-labs/gobetween/src/healthcheck"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/metrics"
+	"github.com/notional-labs/gobetween/src/stats"
+	"github.com/notional-labs/gobetween/src/stats/counters"
 )
 
 /**
@@ -154,7 +153,7 @@ func (this *Scheduler) Start() {
 				backendsPushTicker.Stop()
 				this.Discovery.Stop()
 				this.Healthcheck.Stop()
-				metrics.RemoveServer(fmt.Sprintf("%s", this.StatsHandler.Name), this.backends)
+				metrics.RemoveServer(this.StatsHandler.Name, this.backends)
 				return
 			}
 		}
@@ -200,7 +199,7 @@ func (this *Scheduler) HandleBackendStatsChange(target core.Target, bs *counters
 	backend.Stats.RxSecond = bs.RxSecond
 	backend.Stats.TxSecond = bs.TxSecond
 
-	metrics.ReportHandleBackendStatsChange(fmt.Sprintf("%s", this.StatsHandler.Name), target, this.backends)
+	metrics.ReportHandleBackendStatsChange(this.StatsHandler.Name, target, this.backends)
 }
 
 /**
@@ -215,7 +214,7 @@ func (this *Scheduler) HandleBackendLiveChange(target core.Target, live bool) {
 
 	backend.Stats.Live = live
 
-	metrics.ReportHandleBackendLiveChange(fmt.Sprintf("%s", this.StatsHandler.Name), target, live)
+	metrics.ReportHandleBackendLiveChange(this.StatsHandler.Name, target, live)
 }
 
 /**
@@ -321,7 +320,7 @@ func (this *Scheduler) HandleOp(op Op) {
 		log.Warn("Don't know how to handle op ", op.op)
 	}
 
-	metrics.ReportHandleOp(fmt.Sprintf("%s", this.StatsHandler.Name), op.target, this.backends)
+	metrics.ReportHandleOp(this.StatsHandler.Name, op.target, this.backends)
 }
 
 /**

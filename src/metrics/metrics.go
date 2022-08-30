@@ -5,13 +5,13 @@ import (
 	"net/http"
 	"runtime"
 
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/info"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/stats/counters"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/info"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/stats/counters"
 )
 
 const (
@@ -23,9 +23,9 @@ var (
 	log                  = logging.For("metrics")
 
 	buildInfo *prometheus.GaugeVec
-	version   string
-	revision  string
-	branch    string
+	version   string //nolint:unused
+	revision  string //nolint:unused
+	branch    string //nolint:unused
 
 	serverCount             *prometheus.GaugeVec
 	serverActiveConnections *prometheus.GaugeVec
@@ -257,7 +257,7 @@ func ReportHandleBackendStatsChange(server string, target core.Target, backends 
 		return
 	}
 
-	backend, _ := backends[target]
+	backend := backends[target]
 
 	serverCount.WithLabelValues(server).Set(float64(len(backends)))
 
@@ -272,7 +272,7 @@ func ReportHandleOp(server string, target core.Target, backends map[core.Target]
 		return
 	}
 
-	backend, _ := backends[target]
+	backend := backends[target]
 
 	backendActiveConnections.WithLabelValues(server, target.Host, target.Port).Set(float64(backend.Stats.ActiveConnections))
 	backendRefusedConnections.WithLabelValues(server, target.Host, target.Port).Set(float64(backend.Stats.RefusedConnections))

@@ -11,8 +11,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/logging"
 )
 
 const (
@@ -41,7 +41,7 @@ func proxy(to net.Conn, from net.Conn, timeout time.Duration) <-chan core.ReadWr
 	// Stats collecting goroutine
 	go func() {
 		if timeout > 0 {
-			from.SetReadDeadline(time.Now().Add(timeout))
+			from.SetReadDeadline(time.Now().Add(timeout)) //nolint:errcheck
 		}
 
 		for {
@@ -63,7 +63,7 @@ func proxy(to net.Conn, from net.Conn, timeout time.Duration) <-chan core.ReadWr
 				}
 
 				if timeout > 0 && rwc.CountRead > 0 {
-					from.SetReadDeadline(time.Now().Add(timeout))
+					from.SetReadDeadline(time.Now().Add(timeout)) //nolint:errcheck
 				}
 
 				// Remove non blocking

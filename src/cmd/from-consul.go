@@ -10,11 +10,11 @@ import (
 	"log"
 
 	consul "github.com/hashicorp/consul/api"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/info"
+	"github.com/notional-labs/gobetween/src/utils"
+	"github.com/notional-labs/gobetween/src/utils/codec"
 	"github.com/spf13/cobra"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/info"
-	"github.com/yyyar/gobetween/src/utils"
-	"github.com/yyyar/gobetween/src/utils/codec"
 )
 
 /* Parsed options */
@@ -40,7 +40,10 @@ var FromConsulCmd = &cobra.Command{
 	Long:  `Start using config from the Consul key-value storage`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 1 {
-			cmd.Help()
+			err := cmd.Help()
+			if err != nil {
+				panic(err)
+			}
 			return
 		}
 

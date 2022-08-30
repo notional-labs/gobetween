@@ -13,10 +13,10 @@ import (
 	"time"
 
 	docker "github.com/fsouza/go-dockerclient"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/utils"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/utils"
 )
 
 const (
@@ -122,7 +122,7 @@ func dockerDetermineContainerHost(client *docker.Client, id string, cfg config.D
 
 	if cfg.DockerContainerHostEnvVar != "" {
 
-		container, err := client.InspectContainer(id)
+		container, err := client.InspectContainer(id) //nolint:staticcheck // if this gives us container problems we should update it.
 
 		if err != nil {
 			log.Warn(err)

@@ -11,19 +11,19 @@ import (
 	"net"
 	"time"
 
-	"github.com/yyyar/gobetween/src/balance"
-	"github.com/yyyar/gobetween/src/config"
-	"github.com/yyyar/gobetween/src/core"
-	"github.com/yyyar/gobetween/src/discovery"
-	"github.com/yyyar/gobetween/src/healthcheck"
-	"github.com/yyyar/gobetween/src/logging"
-	"github.com/yyyar/gobetween/src/server/modules/access"
-	"github.com/yyyar/gobetween/src/server/scheduler"
-	"github.com/yyyar/gobetween/src/stats"
-	"github.com/yyyar/gobetween/src/utils"
-	"github.com/yyyar/gobetween/src/utils/proxyprotocol"
-	tlsutil "github.com/yyyar/gobetween/src/utils/tls"
-	"github.com/yyyar/gobetween/src/utils/tls/sni"
+	"github.com/notional-labs/gobetween/src/balance"
+	"github.com/notional-labs/gobetween/src/config"
+	"github.com/notional-labs/gobetween/src/core"
+	"github.com/notional-labs/gobetween/src/discovery"
+	"github.com/notional-labs/gobetween/src/healthcheck"
+	"github.com/notional-labs/gobetween/src/logging"
+	"github.com/notional-labs/gobetween/src/server/modules/access"
+	"github.com/notional-labs/gobetween/src/server/scheduler"
+	"github.com/notional-labs/gobetween/src/stats"
+	"github.com/notional-labs/gobetween/src/utils"
+	"github.com/notional-labs/gobetween/src/utils/proxyprotocol"
+	tlsutil "github.com/notional-labs/gobetween/src/utils/tls"
+	"github.com/notional-labs/gobetween/src/utils/tls/sni"
 )
 
 /**
@@ -81,7 +81,6 @@ type Server struct {
 func New(name string, cfg config.Server) (*Server, error) {
 	log := logging.For("server")
 
-	var err error = nil
 	statsHandler := stats.NewHandler(name)
 
 	// Create server
@@ -103,6 +102,7 @@ func New(name string, cfg config.Server) (*Server, error) {
 
 	/* Add access if needed */
 	if cfg.Access != nil {
+		var err error
 		server.access, err = access.NewAccess(cfg.Access)
 		if err != nil {
 			return nil, err
@@ -111,6 +111,7 @@ func New(name string, cfg config.Server) (*Server, error) {
 
 	/* Add tls configs if needed */
 
+	var err error
 	server.backendsTlsConfg, err = tlsutil.MakeBackendTLSConfig(cfg.BackendsTls)
 	if err != nil {
 		return nil, err
@@ -241,8 +242,8 @@ func (this *Server) wrap(conn net.Conn, sniEnabled bool) {
 	}
 
 	this.connect <- &core.TcpContext{
-		hostname,
-		conn,
+		Hostname: hostname,
+		Conn:     conn,
 	}
 }
 
